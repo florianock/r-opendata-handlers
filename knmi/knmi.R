@@ -3,6 +3,10 @@ library(stringr)
 library(dplyr)
 library(httr)
 
+URL_DAILY <- "http://projects.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi"
+URL_SERIES <- "http://projects.knmi.nl/klimatologie/monv/reeksen/getdata_rr.cgi"
+URL_HOURLY <- "http://projects.knmi.nl/klimatologie/uurgegevens/getdata_uur.cgi"
+
 # Download and extract KNMI data file and return dataframe
 extract_knmi <- function (start_date, end_date, filename) {
   
@@ -23,10 +27,11 @@ extract_knmi <- function (start_date, end_date, filename) {
 
 # Download KNMI data file and save to disk
 download_knmi <- function (start_date, end_date, output_file, vars, stations) {
+  # Use 3 urls for KNMI from constants
   start_string <- paste0(pad_nr(year(start_date)), pad_nr(month(start_date)), pad_nr(day(start_date)), pad_nr(hour(start_date)+1))
   end_string <- paste0(pad_nr(year(end_date)), pad_nr(month(end_date)), pad_nr(day(end_date)), pad_nr(hour(end_date)+1))
   
-  url <- "http://projects.knmi.nl/klimatologie/uurgegevens/getdata_uur.cgi"
+  url <- URL_HOURLY
   body <- list(start=start_string, end=end_string, vars=vars, stns=stations)
 
   r <- POST( url = url,
