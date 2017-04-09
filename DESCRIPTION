@@ -1,0 +1,11 @@
+Package: r-opendata-handlers
+Type: Package
+Title: Several functions for easily downloading and manipulating open data sets.
+Version: 0.0.0.0010
+Authors@R: person("Florian", "Ockhuysen", email = "ockhuysen@yahoo.com", role = c("aut", "cre"))
+Description: Several open data sets can be handled, a.o. KNMI and NDW data.
+    Downloading and cleaning functions are provided so you can immediately get to the interesting stuff of your analysis.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
